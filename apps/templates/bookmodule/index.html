@@ -1,11 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Library</title>
-</head>
-<body>
-    <h1>Hello, {{Name}}!</h1>
-</body>
-</html>
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} My First Index HTML Page {% endblock title %}
+{% block content %}
+<div align="center">
+
+    <h1 style="color: blue;">This is heading 1 (Library)</h1> <!-- add inline css -->
+    <p style="color: white;background-color: black;">This is a paragraph text </p> <!-- 
+add inline css -->
+    <a href="https://www.w3schools.com/html/default.asp">Click Here to learn more about
+        HTML & CSS</a>
+    <hr>
+    <!-- This is a comment in HTML, not render in the bowser -->
+    <h2>This is heading 2</h2>
+    <p>This is some other text. <br /> with newline <br /> and another line</p>
+    <hr>
+    <h2>This is heading 2</h2>
+    <p>This is some other text.</p>
+</div>
+
+{% endblock content %}

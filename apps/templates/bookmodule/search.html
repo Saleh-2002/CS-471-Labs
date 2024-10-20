@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} Searching Page {% endblock title %}
+{% block stylesheets %}
+<style>
+ .searchForm{
+ margin-top: 20px;
+ }
+ button {
+ color: #fff;
+ background-color: #17a2b8;
+ border-color: #17a2b8;
+ border: none;
+ padding: 16px 32px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ font-size: 16px;
+ margin: 4px 2px;
+ transition-duration: 0.4s;
+ cursor: pointer; /* hand pointer */
+}
+button:hover {
+background-color: green;
+color: white;
+}
+
+</style>
+{% endblock stylesheets %}
+{% block content %}
+<form class="searchForm" method="post" action="">
+{% csrf_token %}
+<label>Keywords:</label>
+<input type="text" name="keyword" placeholder="enter a keyword"/>
+<br/>
+<label>Search in:</label>
+<input type="checkbox" name="option1"/><label>Title</label>
+<input type="checkbox" name="option2"/><label>Author</label>
+<br/>
+
+<button type="submit" ><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+</form>
+{% endblock content %}

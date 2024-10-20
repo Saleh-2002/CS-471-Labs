@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %} My First Index HTML Page {% endblock title %}
+
+<style>
+    h1 {
+        color: green;
+    }
+
+    h2 {
+        color: lightskyblue;
+    }
+
+    p {
+        font-family: verdana;
+        font-size: 20px;
+    }
+</style>
+
+{% block content %}
+
+<div align="center">
+    <h1>List of Books</h1>
+
+    <a href="{% url 'books.view_one_book' 123 %}">
+        <h2>Internet & World Wide Web How to Program</h2>
+    </a>
+    <a href="{% url 'books.view_one_book' 123 %}">
+        <img src="{% static 'static/Book1.jpeg' %}" alt="Book1 img desc" width="200" height="200">
+    </a>
+    <hr>
+
+    <h2>2) C++ How to Program, Late Objects Version</h2>
+    <img src="{% static 'static/Book2.jpeg' %}" alt="Book2 img desc" width="200" height="200">
+    <hr>
+
+    <h2>3) Images in Another Folder</h2>
+    <img src="{% static 'static/Book3.jpeg' %}" alt="Book3 img desc" width="200" height="200">
+    <hr>
+</div>
+{% endblock content %}

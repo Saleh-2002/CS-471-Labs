@@ -1,0 +1,61 @@
+.topnav {
+    background-color: #eeeeee;
+    width: 100%;
+    border: solid 1px black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.topnav a {
+    color: #000000;
+    text-align: center;
+    margin-right: 25px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: #008CBA;
+}
+
+.topnav a.active {
+    color: #003142;
+}
+
+.link { /* Corrected lowercase 'link' */
+    text-align: center;
+    display: block;
+    padding: 10px;
+    margin: 10px;
+}
+.link1 { /* Corrected lowercase 'link' */
+    text-align: center;
+    display: block;
+    padding: 10px;
+    margin: 10px;
+}
+#Link1 {
+    color: red;
+    background-color: blue !important;
+}
+
+#Link2 {
+    color: blue;
+    background-color: red !important;
+}
+
+#Link3 {
+    color: green;
+    background-color: yellow !important;
+}
+
+/* Hover effect for the links */
+.link a:hover {
+    color: #008CBA;
+    background-color: #f1f1f1;
+}
+
+/* Visited state */
+.link a:visited {
+    color: orange;
+}

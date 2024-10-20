@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html> 
+{% load static %} 
+<head> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/4.7.0/css/font-awesome.min.css">
+<title>{% block title %} {% endblock title %}</title> 
+<meta name="keywords" content="Books, recent, Learning, library"> 
+<meta name="description" content="Books website"> 
+<meta name="author" content="author name"> 
+<link rel="icon" href="{% static 'qu-icon.png' %}"> 
+<meta charset="UTF-8"> 
+<link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- include css file --> 
+{% block stylesheets %}{% endblock stylesheets %} 
+</head> 
+<body> 
+{% include "includes/header.html" %} 
+{% block content %} {% endblock content %} 
+{% include "includes/footer.html" %} 
+</body> 
+</html> 
