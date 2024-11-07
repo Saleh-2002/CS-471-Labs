@@ -59,19 +59,19 @@ def html5_links(request):
 
 def search(request):
     if request.method == "POST":
-            string = request.POST.get("keyword").lower()
-            isTitle = request.POST.get("option1")
-            isAuthor = request.POST.get("option2")
-            # now filter
-            books = __getBooksList()
-            newBooks = []
-            for item in books:
-                contained = False
-                if isTitle and string in item["title"].lower(): contained = True
-                if not contained and isAuthor and string in item["author"].lower(): contained = True
-                if contained: newBooks.append(item)
-            return render(request, "bookmodule/bookList.html", {"books": newBooks})
-    return render(request, "bookmodule/bookList.html")
+        string = request.POST.get("keyword").lower()
+        isTitle = request.POST.get("option1")
+        isAuthor = request.POST.get("option2")
+        # now filter
+        books = __getBooksList()
+        newBooks = []
+        for item in books:
+            contained = False
+            if isTitle and string in item["title"].lower(): contained = True
+            if not contained and isAuthor and string in item["author"].lower(): contained = True
+            if contained: newBooks.append(item)
+        return render(request, "bookmodule/bookList.html", {"books": newBooks})
+    return render(request, "bookmodule/search.html")
 
 
 
