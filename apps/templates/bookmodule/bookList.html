@@ -4,17 +4,13 @@
 {% block content %}
 
 <h2>Book List</h2>
-{% if books %}
 <ul>
-    {% for book in books %}
+    {% for obj in books %}
     <li>
-        <strong>Title:</strong> {{ book.title }}<br>
-        <strong>Author:</strong> {{ book.author }}
+        ID: {{obj.id}}, Title: {{obj.title}}
     </li>
+    <hr>
     {% endfor %}
 </ul>
-{% else %}
-<p>No books found matching your criteria.</p>
-{% endif %}
 
 {% endblock content %}
