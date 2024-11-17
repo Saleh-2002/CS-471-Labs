@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Book 
+from .models import Book
 
 
 def index(request):
@@ -10,9 +10,10 @@ def index(request):
         request, "bookmodule/index.html", {"Name": Name}
     )  # render the template with the provided name
 
-def simple_query(request): 
-    mybooks=Book.objects.filter(title__icontains='and') # <- multiple objects 
-    return render(request, 'bookmodule/bookList.html', {'books':mybooks}) 
+
+def simple_query(request):
+    mybooks = Book.objects.filter(title__icontains="and")  # <- multiple objects
+    return render(request, "bookmodule/bookList.html", {"books": mybooks})
 
 
 def index2(request, val1=0):
@@ -72,14 +73,14 @@ def search(request):
         newBooks = []
         for item in books:
             contained = False
-            if isTitle and string in item["title"].lower(): contained = True
-            if not contained and isAuthor and string in item["author"].lower(): contained = True
-            if contained: newBooks.append(item)
+            if isTitle and string in item["title"].lower():
+                contained = True
+            if not contained and isAuthor and string in item["author"].lower():
+                contained = True
+            if contained:
+                newBooks.append(item)
         return render(request, "bookmodule/bookList.html", {"books": newBooks})
     return render(request, "bookmodule/search.html")
-
-
-
 
 
 def __getBooksList():
@@ -101,11 +102,35 @@ def __getBooksList():
     return [book1, book2, book3]
 
 
+def complex_query(request):
+    mybooks = books = (
+        Book.objects.filter(author__isnull=False)
+        .filter(title__icontains="and")
+        .filter(edition__gte=2)
+        .exclude(price__lte=100)[:10]
+    )
+    if len(mybooks) >= 1:
+        return render(request, "bookmodule/bookList.html", {"books": mybooks})
+    else:
+        return render(request, "bookmodule/index.html")
 
 
-def complex_query(request): 
-    mybooks=books=Book.objects.filter(author__isnull = False).filter(title__icontains='and').filter(edition__gte = 2).exclude(price__lte = 100)[:10] 
-    if len(mybooks)>=1: 
-        return render(request, 'bookmodule/bookList.html', {'books':mybooks}) 
-    else: 
-        return render(request, 'bookmodule/index.html') 
+def Lab8Task1(request):
+    return render(request, "bookmodule/Lab8Task1.html")
+
+
+
+def Lab8Task2(request):
+    return render(request, "bookmodule/Lab8Task2.html")
+
+
+def Lab8Task3(request):
+    return render(request, "bookmodule/Lab8Task3.html")
+
+
+def Lab8Task4(request):
+    return render(request, "bookmodule/Lab8Task4.html")
+
+
+def Lab8Task5(request):
+    return render(request, "bookmodule/Lab8Task5.html")

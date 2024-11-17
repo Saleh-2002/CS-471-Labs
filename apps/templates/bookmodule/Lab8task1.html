@@ -3,13 +3,15 @@
 {% block title %} My First Index HTML Page {% endblock title %}
 {% block content %}
 
-<h2 style="text-align: center;">Book List</h2>
-<ul style="text-align: center;">
+<h1>Books for >= $50</h1>
+<ul>
     {% for obj in books %}
+    {%if obj.price >= 50%}
     <li>
         ID: {{obj.id}}, Title: {{obj.title}}
     </li>
     <hr>
+    {% endif %}
     {% endfor %}
 </ul>
 
