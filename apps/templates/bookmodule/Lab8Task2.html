@@ -1,9 +1,32 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-{% block title %} My First Index HTML Page {% endblock title %}
+{% block title %}Books with Specific Conditions{% endblock title %}
 {% block content %}
 
-
-
+    <h1>Books with Edition > 2 and 'qu' in Title or Author</h1>
+    {% if books %}
+        <table style="text-align: center;">
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Edition</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>${{ book.price }}</td>
+                        <td>{{ book.edition }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No books found with the specified criteria.</p>
+    {% endif %}
 
 {% endblock content %}

@@ -15,4 +15,6 @@ urlpatterns = [
     path("lab8/task3", views.Lab8Task3, name="books.Lab8Task3"),
     path("lab8/task4", views.Lab8Task4, name="books.Lab8Task4"),
     path("lab8/task5", views.Lab8Task5, name="books.Lab8Task5"),
+    path("lab8/task6", views.Lab8Task6, name="books.Lab8Task6"),
+
 ]

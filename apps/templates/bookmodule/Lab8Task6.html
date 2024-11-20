@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Students Per City{% endblock title %}
+
+{% block content %}
+    <h1>Number of Students in Each City</h1>
+
+    {% if cities %}
+        <table>
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Number of Students</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in cities %}
+                    <tr>
+                        <td>{{ city.city }}</td>
+                        <td>{{ city.student_count }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No students found.</p>
+    {% endif %}
+{% endblock content %}

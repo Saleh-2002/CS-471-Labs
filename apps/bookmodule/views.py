@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.db.models import Q
 from django.shortcuts import render
+from .models import Address
+
 from .models import Book
+from django.db.models import Sum, Avg, Max, Min, Count
 
 
 def index(request):
@@ -12,7 +16,7 @@ def index(request):
 
 
 def simple_query(request):
-    mybooks = Book.objects.filter(title__icontains="and")  # <- multiple objects
+    mybooks = Book.objects.filter(title__icontains="")  # <- multiple objects
     return render(request, "bookmodule/bookList.html", {"books": mybooks})
 
 
@@ -116,21 +120,39 @@ def complex_query(request):
 
 
 def Lab8Task1(request):
-    return render(request, "bookmodule/Lab8Task1.html")
-
+    books = Book.objects.filter(Q(price__lte=100))
+    return render(request, "bookmodule/Lab8Task1.html", {"books": books})
 
 
 def Lab8Task2(request):
-    return render(request, "bookmodule/Lab8Task2.html")
+    books = Book.objects.filter(
+        Q(edition__gt=2) & (Q(title__icontains="qu") | Q(author__icontains="qu"))
+    )
+    return render(request, "bookmodule/Lab8Task2.html", {"books": books})
 
 
 def Lab8Task3(request):
-    return render(request, "bookmodule/Lab8Task3.html")
+    books = Book.objects.filter(
+        Q(edition__lte=2) & ~(Q(title__icontains="qu") | Q(author__icontains="qu"))
+    )
+    return render(request, "bookmodule/Lab8Task3.html", {"books": books})
 
 
 def Lab8Task4(request):
-    return render(request, "bookmodule/Lab8Task4.html")
+    books = Book.objects.all().order_by("title")
+    return render(request, "bookmodule/Lab8Task4.html", {"books": books})
 
 
 def Lab8Task5(request):
-    return render(request, "bookmodule/Lab8Task5.html")
+    stats = Book.objects.aggregate(
+        total_books=Count("id"),
+        total_price=Sum("price"),
+        avg_price=Avg("price"),
+        max_price=Max("price"),
+        min_price=Min("price"),
+    )
+    return render(request, "bookmodule/Lab8Task5.html", {"stats": stats})
+
+def Lab8Task6(request):
+    cities = Address.objects.annotate(student_count=Count('student'))
+    return render(request, "bookmodule/Lab8Task6.html", {"cities": cities})

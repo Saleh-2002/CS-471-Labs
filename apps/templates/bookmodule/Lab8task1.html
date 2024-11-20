@@ -1,18 +1,39 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+
 {% block title %} My First Index HTML Page {% endblock title %}
+
 {% block content %}
+    <h1>Books with Price ≤ 50</h1>
+    
 
-<h1>Books for >= $50</h1>
-<ul>
-    {% for obj in books %}
-    {%if obj.price >= 50%}
-    <li>
-        ID: {{obj.id}}, Title: {{obj.title}}
-    </li>
-    <hr>
+        
+ 
+    {% if books %}
+    <table class="Table" style="text-align: left;">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                {% if book.price <= 50 %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>${{ book.price }}</td>
+                    </tr>
+                {% endif %}
+            {% empty %}
+                <tr>
+                    <td colspan="2">No books found under $50.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% else %}
+        <p>No books found under $50.</p>
     {% endif %}
-    {% endfor %}
-</ul>
-
 {% endblock content %}

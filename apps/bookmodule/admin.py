@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Student, Address
 
-# Register your models here.
+# Register models in the admin interface
+admin.site.register(Student)
+admin.site.register(Address)

@@ -1,9 +1,32 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-{% block title %} My First Index HTML Page {% endblock title %}
-{% block content %}
+{% block title %}Books Ordered by Title{% endblock title %}
+{% block content %}             
 
-
-
+    <h1>Books Ordered by Title</h1>
+    {% if books %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Edition</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>${{ book.price }}</td>
+                        <td style="text-align: center;">{{ book.edition }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No books found.</p>
+    {% endif %}
 
 {% endblock content %}

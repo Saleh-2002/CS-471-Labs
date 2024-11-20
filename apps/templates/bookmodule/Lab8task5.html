@@ -1,9 +1,38 @@
 {% extends "layouts/base.html" %}
 {% load static %}
-{% block title %} My First Index HTML Page {% endblock title %}
+{% block title %}Book Statistics{% endblock title %}
 {% block content %}
 
-
-
+    <h1>Book Statistics</h1>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: left;">Statistic</th>
+                <th style="text-align: right;">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Number of Books</td>
+                <td style="text-align: right;">{{ stats.total_books }}</td>
+            </tr>
+            <tr>
+                <td>Total Price of Books</td>
+                <td style="text-align: right;">${{ stats.total_price }}</td>
+            </tr>
+            <tr>
+                <td>Average Price of Books</td>
+                <td style="text-align: right;">${{ stats.avg_price }}</td>
+            </tr>
+            <tr>
+                <td>Maximum Price of Books</td>
+                <td style="text-align: right;">${{ stats.max_price }}</td>
+            </tr>
+            <tr>
+                <td>Minimum Price of Books</td>
+                <td style="text-align: right;">${{ stats.min_price }}</td>
+            </tr>
+        </tbody>
+    </table>
 
 {% endblock content %}
